@@ -8,3 +8,4 @@ folium
 streamlit_folium
 nltk
 -U nltk
+nltk.download('punkt')
