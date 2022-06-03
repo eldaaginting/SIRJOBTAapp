@@ -6,4 +6,4 @@ sklearn
 plotly
 folium
 streamlit_folium
-nltk==3.5
+
