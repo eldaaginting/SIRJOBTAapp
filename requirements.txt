@@ -8,4 +8,4 @@ folium
 streamlit_folium
 wordcloud
 streamlit-option-menu
-KNeighborsClassifier
+
