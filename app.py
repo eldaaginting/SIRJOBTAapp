@@ -638,9 +638,9 @@ def main():
             def KNN(job_dataset, resume_data):
                 tfidf_vectorizer = TfidfVectorizer(stop_words='english')
                 n_neighbors = 1000
-                KNN = NearestNeighbors(n_neighbors, p=2)
+                KNN = NearestNeighbors(n_neighbors=9)
                 KNN.fit(tfidf_vectorizer.fit_transform(job_dataset))
-                NNs = KNN.kneighbors(tfidf_vectorizer.transform(resume_data), return_distance=True)
+                NNs = KNN.kneighbors(tfidf_vectorizer.transform(resume_data))
                 top = NNs[1][0][1:]
                 index_score = NNs[0][0][1:]
                 output_knn = get_recommendation(top, starlight_job_df, index_score)
