@@ -81,12 +81,8 @@ def main():
         st.title('Welcome to SIRJOBTA')
         st.markdown("""------------------------------------------------------------------------------------------------""")
         
-        st.image(img, width=1100)
-        st.write("Mencari lowongan kerja kapanpun dan dimanapun dengan SIRJOBTA")
-        st.write("**SIRJOBTA** merupakan  recommendation system untuk  mencari kerja berbasis web yang berguna untuk personal branding dan mencari pekerjaan berdasarkan isi dari curiculum vitai user pengguna. Sistem ini membantu para pencari kerja sesuai dengan talenta yang dimliki.")
-        st.write("Temukan lowongan dan recomendasi kerja menggunakan SIRJOBTA, Teknologi AI pencarian dan recomendasi kerja paling lengkap, SIRJOBTA menawarkan recomendasi berdasarkan curiculum vitai pengguna yang nantinya akan langsung menemukan recomendasi lowongan kerja dari ribuan perusahaan.  ")
-        st.write("Mulai dari proses melihat visualisasi daftar lowongan kerja, recomendasi jobt& talent,searc job akan membantu kamu untuk menjalani seluruh proses pencarian kerja baru kamu.")
-
+        st.image(img, width=1300)
+        
         st.markdown("""------------------------------------------------------------------------------------------------""")
         st.markdown("""
         **Tentang SIRJOBTA:**
