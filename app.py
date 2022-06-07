@@ -84,47 +84,20 @@ def main():
         st.image(img, width=1000)
         
         st.markdown("""------------------------------------------------------------------------------------------------""")
-        st.markdown("""
-        **Tentang SIRJOBTA:**
-        * SIRJOBTA (Sistem Rekomendasi Job And Talent) adalah sistem web yang  berguna untuk personal branding dan mencari pekerjaan berdasarkan  CV(Curriculum Vitae) . 
-        * SIRJOBTA dapat diakses di Android dan iOS dengan menggunakan web browser karena sistem ini berbasis website. 
-        * SIRJOBTA adalah platform bagi siapa saja yang ingin memajukan karier mereka seperti pencari kerja dan mahasiswa 
-        * Dengan menggunakan SIRJOBTA bisa mempermudah mencari atau mendapatkan pekerjaan dan juga memperluas jaringan 
-        * SIRJOBTA bisa digunakan kapanpun ketika kita membutuhkan untuk mencari pekerjaan ataupun memperluas jaringan 
        
-        ------------------------------------------------------------------------------------------------
-        """)
+        imgm2 = Image.open("data/m2.png")
+        st.image(imgm2, width=1000)
+        st.markdown("""------------------------------------------------------------------------------------------------""")
         
-        st.markdown("""
-        **Fitur SIRJOBTA:**
-        * Untuk pengalaman terbaik pengguna , buka tautan situs ini di laptop/smarphone/PC Anda.
-        * Menu Home - sistem untuk melihat halaman utama SIRJOBTA 
-        * Menu Exploration Job&Talent - Sistem visualisasi daftar lowongan pekerjaan.
-        * Recommendation Job&Talent - Sistem untuk  mencari kerja berbasis web yang berguna untuk personal branding dan mencari pekerjaan berdasarkan isi dari curiculum vitai  pengguna.
-        * Menu Search Job - Sistem untuk menemukan informasi rekomendasi kerja sesuai input job title.
-        * Menu Devolep - Sistem menampilkan daftar  tim pengembang SIRJOBTA.
-       
-        ------------------------------------------------------------------------------------------------
-        """)
+        imgm3 = Image.open("data/m3.png")
+        st.image(imgm3, width=1000)
+        st.markdown("""------------------------------------------------------------------------------------------------""")
         
         # Sreaping
-        st.write("**Web Scraping**")
-        img_screaping = Image.open("data/sreaping.png")
-        st.image(img_screaping, width=600)
-        st.markdown("""
-        **Web Scraping**
-        dataset yang digunakan SIRJOBTA diambil dari situs www.techinasia.com, SIRJOBTA mengambil data keseluruhan job yang di posting pada tahun 2022 dengan spesifikasi Years of Experience terdiri dari: 
-        * Less than 1 years, 
-        * 1 to 4 years, 
-        * 4 to 7 years, 
-        * 7 to 10 years, 
-        * dan More than 10 years. 
+        imgm4 = Image.open("data/m4.png")
+        st.image(imgm4, width=1000)
         
-        Dengan jumlah 1831 data  memiliki 13 kolom pada dataset yang telah SIRJOBTA scraping 
-       
-        ------------------------------------------------------------------------------------------------
-        """)
-        
+        st.markdown("""------------------------------------------------------------------------------------------------""")
         #proses
         
         st.write("**Processing System SIRJOBTA:**")
