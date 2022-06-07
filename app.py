@@ -76,7 +76,7 @@ def main():
     if selected == "Home":
         # import Image 
         from PIL import Image
-        img = Image.open("data/logo.png")
+        img = Image.open("data/m1.png")
         st.date_input("")
         st.title('Welcome to SIRJOBTA')
         st.markdown("""------------------------------------------------------------------------------------------------""")
