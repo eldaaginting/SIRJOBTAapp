@@ -99,10 +99,9 @@ def main():
         
         st.markdown("""------------------------------------------------------------------------------------------------""")
         #proses
-        
-        st.write("**Processing System SIRJOBTA:**")
-        img_convert = Image.open("data/convert.png")
-        st.image(img_convert, width=600)
+       
+        img_convert = Image.open("data/m5.png")
+        st.image(img_convert, width=1000)
         
         st.write("**Untuk mencari recomdendasi kerja:**") 
         st.markdown("""
