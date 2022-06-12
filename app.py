@@ -745,38 +745,14 @@ def main():
     elif selected == "Search jobs":
         st.date_input("")
         st.title(f"Search Jobs")
-        data_dir = 'data/'
+        data = pd.read_csv("data/Dataset Techinasia Preprocessing.csv", usecols=lambda c: not c.startswith('Unnamed:'))
+
         tfdif = TfidfVectorizer(stop_words='english')
-        def recommend_jobs(search: str, item_count: int = 30) -> pd.DataFrame:
-            jobs_list = pd.concat(
-                [pd.Series([search]), data['Industries']],
-                ignore_index=True
-            )
-            description_matrix = tfdif.fit_transform(jobs_list)
-            similarity_matrix = linear_kernel(description_matrix)
+        def search_jobs(search: str, item_count: int = 10) -> pd.DataFrame:
+            jobs_list = data[data['Job Title'].str.contains(search)]
 
-            job_index = 0
-
-            similarity_score = list(enumerate(similarity_matrix[job_index]))
-            similarity_score = sorted(similarity_score, key=lambda x: x[1], reverse=True)
-            similarity_score = similarity_score[1:item_count + 1]
-
-            job_indices = [i[0] for i in similarity_score]
-            return data.iloc[job_indices]
+            return jobs_list.iloc[1:item_count + 1]
             
-            
-        @st.cache(allow_output_mutation=True)
-        def load_data() -> pd.DataFrame:
-
-            df = pd.concat(map(pd.read_csv, glob.glob('data/*.csv')))
-
-            df['Position'] = df['Position'].fillna('')
-
-            df.drop('Job Experience', inplace=True, axis=1)
-
-            return df
-            
-        data = load_data()
             
         with st.container():
             col1, col2, col3 = st.columns((2, 0.5, 2))
@@ -786,12 +762,12 @@ def main():
                 st.write(f'Search results for: {search_input}')
 
             with col3:
-                result_count = st.number_input('Results count', 1, 100, 30)
+                result_count = st.number_input('Results count', 1, 10, 10)
                 st.write('')
             
     
         if search_input != '':
-            results = recommend_jobs(search_input, result_count)
+            results = search_jobs(search_input, result_count)
             st.snow()
 
             with st.container():
@@ -812,6 +788,7 @@ def main():
                         st.write(result['Job Requirement'])
 
                         st.write(f'**Link:** [{result["Job Posting Link"]}]({result["Job Posting Link"]})')
+                       
                        
 
         
