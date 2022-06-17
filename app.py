@@ -103,7 +103,7 @@ def main():
         img_convert = Image.open("data/m5.png")
         st.image(img_convert, width=1000)
         
-        st.write("**Untuk mencari recomdendasi kerja:**") 
+        st.write("**Untuk mencari recomendasi kerja Berdasarkan CV:**") 
         st.markdown("""
         * Pertama, Pilih menu recomendasi job&talent 
         * Masukkan CV dan kemudian akan diproses oleh sistem sirjobta. 
