@@ -5,5 +5,5 @@
 ![Pemilihan_999(588)](https://user-images.githubusercontent.com/102804771/174326732-c1eb75ac-9dd2-4d2f-9e47-06a664640bbb.png)
 ![Pemilihan_999(589)](https://user-images.githubusercontent.com/102804771/174326740-d1622b30-c2e8-4efb-8b82-d12401733a2f.png)
 ![Pemilihan_999(591)](https://user-images.githubusercontent.com/102804771/174326744-a0117f80-14fe-4ec3-925c-f4c26cfb60da.png)
-![Pemilihan_999(592)](https://user-images.githubusercontent.com/102804771/174326751-bd82713c-173b-4eab-9eda-b80a5f2cc66c.png)
+![Pemilihan_999(678)](https://user-images.githubusercontent.com/102804771/174328325-8c3560da-9ee8-4d8c-aade-ed730ad7daaa.png)
 ![Pemilihan_999(593)](https://user-images.githubusercontent.com/102804771/174326473-fb76472f-ff39-4038-bfca-d3a1f0b84881.png)
