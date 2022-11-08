@@ -10,4 +10,4 @@ wordcloud
 streamlit-option-menu
 opencv-python-headless==4.5.3.56
 nltk==3.5
-pip3 scikit-learn scipy matplotlib
+scikit-learn
