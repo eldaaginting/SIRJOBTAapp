@@ -54,7 +54,7 @@ def main():
     #harozontal menu
     selected = option_menu(
         menu_title="SIRJOBTA",
-        options=["Home",  "Exploration Job & Talent", "Recommendation Job & Talent", "Search jobs", "Developer"],
+        options=["Home",  "Exploration Job&Talent", "Recommendation Job&Talent", "Search jobs", "Devolep"],
         icons=["house",  "bar-chart-line", "hand-thumbs-up", "search", "people-fill"],
         menu_icon="globe",
         default_index=0,
@@ -64,7 +64,7 @@ def main():
                     "icon": {"color": "orange", "font-size": "25px"},
                     "nav-link": {
                         "font-size": "13px",
-                        "text-align": "center",
+                        "text-align": "left",
                         "margin": "0px",
                         "--hover-color": "#eee",
                     },
@@ -103,31 +103,32 @@ def main():
         img_convert = Image.open("data/m5.png")
         st.image(img_convert, width=1000)
         
-        st.write("**Untuk mencari rekomendasi kerja Berdasarkan CV:**") 
+        st.write("**Untuk mencari recomdendasi kerja:**") 
         st.markdown("""
-        * Pertama, pilih menu recommendation job&talent 
-        * Masukkan CV dengan format pdf, kemudian akan diproses oleh sistem. 
+        * Pertama, Pilih menu recomendasi job&talent 
+        * Masukkan CV dan kemudian akan diproses oleh sistem sirjobta. 
         * Setelah itu, CV dan lowongan pekerjaan akan menjalani pemrosesan. 
         * Kemudian CV dan lowongan kerja akan dibandingkan dengan berbagai metode untuk menemukan kesamaan. 
         * Terakhir, sistem akan mencantumkan rekomendasi pekerjaan.
         
 
         **Untuk mencari lowongan kerja berdasarkan Search Jobs :** 
-        * Pertama, Pilih menu search jobs 
+        * Pertama, Pilih menu Search job&talent 
         * Masukkan Job Tittle yang mau dicari
-        * Masukkan jumlah rekomendasi pencarian yang diinginkan 
-        * Kemudian akan diproses oleh sistem  
+        * Masukkan jumlah recomendasi pencarian anda 
+        * Kemudian akan diproses oleh sistem sirjobta. 
         * Setelah itu, input pencarian dan lowongan pekerjaan akan menjalani pemrosesan. 
-        * Input pencarian dan lowongan kerja akan dibandingkan dengan berbagai metode untuk menemukan kesamaan. 
-        * Terakhir, sistem akan mencantumkan hasil rekomendasi pekerjaan.
+        * Kemudian input pencarian dan lowongan kerja akan dibandingkan dengan berbagai metode untuk menemukan kesamaan. 
+        * Terakhir, sistem akan mencantumkan search rekomendasi pekerjaan anda.
        
         ------------------------------------------------------------------------------------------------
         """)
         #DATASET
         st.write("**Dataset SIRJOBTA**")  # add a title
         st.write("Dataset yang kami gunakan diambil dari situs www.techinasia.com, kami mengambil data keseluruhan job yang di posting pada tahun 2022 dengan spesifikasi Years of Experience terdiri dari: Less than 1 years, 1 to 4 years, 4 to 7 years, 7 to 10 years, dan More than 10 years. Kami memiliki 16 kolom pada dataset yang telah kami scraping.")
-        df = pd.read_csv("data/Dataset Techinasia Preprocessing.csv")  # read a CSV file inside the 'data"
-        
+        df = pd.read_csv("data/Dataset Techinasia Preprocessing.csv", usecols=lambda c: not c.startswith('Unnamed:'))  # read a CSV file inside the 'data"
+        df = df.drop('Language', axis=1)
+        df['Vacancy Count'] = df['Vacancy Count'].astype(int)
         st.write(df)  # visualize my dataframe in the Streamlit app
         
         st.markdown("""
@@ -136,10 +137,9 @@ def main():
 
         *   Index: Indeks setiap baris (self-ecplanatory) mulai dari 0
 
-        *   Job Type: Tipe dari pekerjaan yang dibutuhkan (Fulltime, Contract, Internship, dll)
+        *   Job Type: Tipe dari pekerjaan yang dibutuhkan(Fulltime, Contract, Intership, dll)
 
         *   Job Experience: Total pengalaman yang dibutuhkan
-        
         *   Position: Posisi dari pekerjaan yang dibutuhkan
 
         *   Vacancy Count: Jumlah lowongan yang dibutuhkan
@@ -156,7 +156,7 @@ def main():
 
         *   Job Salary: Rentang salary dari masing-masing pekerjaan
 
-        *   Skills: Keterampilan yang dibutuhkan dari masing-masing pekerjaan
+        *   Skills: Skill/Keahlian yang dibutuhkan dari masing-masing pekerjaan
         *   Career Level: Career level dari pekerjaan yang dibutuhkan
         *   Salary Min: Minimum salary
         *   Salary Max: Maximum Salary
@@ -183,7 +183,7 @@ def main():
     elif selected == "Exploration Job&Talent": 
         st.date_input("")
         # dashboard title
-        st.title("Exploration Data Science Job & Talent")
+        st.title("Exploration Data Science Job&Talent")
         st.markdown("""------------------------------------------------------------------------------------------------""")
         # read csv 
         df = pd.read_csv("data/Dataset Techinasia Preprocessing.csv")
@@ -191,8 +191,7 @@ def main():
         
         #Trends For All Indonesia
         st.header('Trends For All Indonesia: www.techinasia.com:')
-        st.markdown("""
-        """)
+        st.markdown("""""")
 
         companies = df['Company'].value_counts()
         companies = dict(companies)
@@ -349,7 +348,7 @@ def main():
 
 
        # Company Hiring For All Data Science 
-        st.subheader('Company Hiring For All Data Science Related Roles')
+        st.subheader('Company Hiring For All Data Science  Related Roles ')
         company_list = df['Company'].values.tolist()
         count = Counter(company_list)
         wordcloud = WordCloud(width = 1000, height = 500, background_color='lightblue')\
@@ -443,9 +442,8 @@ def main():
         st.markdown("""------------------------------------------------------------------------------------------------""")
 
         
-        # Recommendation Job&Talent
+    # Recommendation Job&Talent
     elif selected == "Recommendation Job&Talent": 
-        st.date_input("")
         # (OCR function)
         def extract_data(feed):
             text=''
@@ -465,7 +463,7 @@ def main():
         
         # Title & select boxes--------------------------display##
         st.title('Job Recommendation')
-        st.markdown("""------------------------------------------------------------------------------------------------""")
+
         c1, c2, c3 = st.columns((3,3,2))
         cv = c1.file_uploader('Upload your CV', type='pdf')
 
@@ -531,7 +529,7 @@ def main():
                 recommendation = pd.DataFrame(columns = ['Job Id', 'Job Type', 'Job Experience', 'Career Level', 'Position',
                                                         'Industries', 'Vacancy Count', 'Job Title', 'Job Requirement', 'Skills',
                                                         'Job Salary', 'Salary Min', 'Salary Max', 'Company', 'Location','Date Created', 
-                                                        'Job Posting Link','Score'])
+                                                        'Job Posting Link','score'])
                 count = 0
                 for i in top:
                     recommendation.at[count, 'Job Id'] = df.index[i]
@@ -607,9 +605,9 @@ def main():
             def KNN(job_dataset, resume_data):
                 tfidf_vectorizer = TfidfVectorizer(stop_words='english')
                 n_neighbors = 1000
-                KNN = NearestNeighbors(n_neighbors=9)
+                KNN = NearestNeighbors(n_neighbors, p=2)
                 KNN.fit(tfidf_vectorizer.fit_transform(job_dataset))
-                NNs = KNN.kneighbors(tfidf_vectorizer.transform(resume_data))
+                NNs = KNN.kneighbors(tfidf_vectorizer.transform(resume_data), return_distance=True)
                 top = NNs[1][0][1:]
                 index_score = NNs[0][0][1:]
                 output_knn = get_recommendation(top, starlight_job_df, index_score)
@@ -703,7 +701,7 @@ def main():
                 extra_stopword = ['data','experience','work','team','will','skill','year','skills']
                 stop_words = text.ENGLISH_STOP_WORDS.union(extra_stopword)
                 
-                st.write("**SKILLS OF THE RECOMMENDED JOBS**")
+                st.write("**JOB SKILLS OF RECOMMENDATION JOBS**")
 
                 wc = WordCloud(stopwords=stop_words, background_color="white", colormap="Dark2",
                             random_state=42, collocations = False)
@@ -721,12 +719,12 @@ def main():
 
 
             # Expander for jobs df ---------------------------display#
-            db_expander = st.expander(label='Job Recommendation:')
+            db_expander = st.expander(label='Job Recommendations:')
 
             def make_clickable(link):
                 # Target _blank to open new window
                 # Extract clickable text to display for your link
-                text = 'Click here'
+                text = 'Apply Link'
                 return f'<a target="_blank" href="{link}">{text}</a>'
 
             with db_expander:
@@ -737,15 +735,14 @@ def main():
                 
                 show_df = final_df.to_html(escape=False)
                 st.write(show_df, unsafe_allow_html=True)
-                
-                
-                
+            
             st.snow()
         
     #Search jobs    
     elif selected == "Search jobs":
         st.date_input("")
         st.title(f"Search Jobs")
+
         data = pd.read_csv("data/Dataset Techinasia Preprocessing.csv", usecols=lambda c: not c.startswith('Unnamed:'))
 
         tfdif = TfidfVectorizer(stop_words='english')
@@ -790,11 +787,10 @@ def main():
 
                         st.write(f'**Link:** [{result["Job Posting Link"]}]({result["Job Posting Link"]})')
                        
-                       
 
         
-    #Developer
-    elif selected == "Developer":
+    #Devolep
+    elif selected == "Devolep":
         st.title(f"TIM STARLIGHT")
         st.write("**CLASS GALAXY  || COACH ANNISA RIZKI LILIANDARI || MSIB2 ORBIT FUTURE ACADEMY**")
 
